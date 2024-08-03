@@ -1,1 +1,143 @@
-// app global css in SCSS form
+@mixin embed_font($name, $file) {
+	$filepath: "../../static/fonts/"+$file;
+
+	@font-face {
+		font-family: $name;
+		font-display: swap;
+		src: url($filepath+".woff2") format("woff2"),
+			url($filepath+".ttf") format("ttf");
+	}
+}
+
+@include embed_font("Montserrat Black", "Montserrat-Black");
+@include embed_font("Montserrat Bold", "Montserrat-Bold");
+@include embed_font("Source Sans Pro Bold", "SourceSansPro-Bold");
+@include embed_font("Source Sans Pro", "SourceSansPro-Regular");
+
+@keyframes scaleFromLeft {
+	0% {
+		transform: scaleX(0);
+	}
+
+	100% {
+		transform: scaleX(1);
+	}
+}
+
+@keyframes scaleFromRight {
+	0% {
+		transform: scaleX(0);
+	}
+
+	100% {
+		transform: scaleX(1);
+	}
+}
+
+html {
+	font-family: "Source Sans Pro";
+	font-size: calc(max(16px, 3vw));
+}
+
+@media (min-width:$breakpoint-sm-min) {}
+
+@media (min-width:$breakpoint-md-min) {
+	html {
+		font-size: calc(max(18px, 2vw));
+	}
+}
+
+@media (min-width:$breakpoint-lg-min) {
+	html {
+		font-size: calc(clamp(16px, 1.4vw, 22px));
+	}
+}
+
+body {
+	font-size: 1rem;
+}
+
+body.body--dark {
+	background-color: $dark;
+}
+
+h1 {
+	font-family: "Montserrat Black", "Arial Black";
+	font-weight: 900;
+	transition: color 1s;
+}
+
+h2 {
+	font-family: "Montserrat Bold", "Arial";
+	transition: color 1s;
+}
+
+h3 {
+	font-family: "Source Sans Pro Bold", "Arial";
+	transition: color 1s;
+}
+
+h4 {
+	font-family: "Source Sans Pro Bold", "Arial";
+	transition: color 1s;
+}
+
+h5 {
+	font-family: "Source Sans Pro Bold", "Arial";
+	transition: color 1s;
+}
+
+h6 {
+	font-family: "Source Sans Pro Bold", "Arial";
+	transition: color 1s;
+}
+
+p,
+li {
+	font-family: "Source Sans Pro", "Arial";
+	font-size: 1rem;
+	transition: color 1s;
+
+	em {
+		color: $purple-12;
+		font-style: normal;
+	}
+
+	i {
+		color: $light-blue;
+	}
+}
+
+ul {
+	padding-left: 1em;
+}
+
+.q-btn {
+	font-family: "Source Sans Pro", "Tahoma";
+}
+
+a {
+	color: $light-blue;
+	position: relative;
+	text-decoration: none;
+	transition: color 0.3s;
+
+	&:not(.q-btn) {
+		&:hover {
+			&:after {
+				max-width: 100%;
+			}
+		}
+
+		&:after {
+			border-bottom: 2px solid $light-blue;
+			bottom: -2px;
+			content: "";
+			left: 0;
+			max-width: 0%;
+			position: absolute;
+			transition: max-width 0.3s;
+			width: 100%;
+		}
+	}
+}
